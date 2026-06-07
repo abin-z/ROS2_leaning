@@ -43,6 +43,11 @@ add_executable(
   src/talker.cpp
 )
 
+add_executable(
+  cpp_listener 
+  src/listener.cpp
+)
+
 # ROS2 推荐使用 ament_target_dependencies()
 # 来声明 ROS2 Package 依赖。
 #
@@ -61,6 +66,12 @@ ament_target_dependencies(
 
 ament_target_dependencies(
   cpp_talker
+  rclcpp
+  std_msgs
+)
+
+ament_target_dependencies(
+  cpp_listener
   rclcpp
   std_msgs
 )
@@ -90,6 +101,11 @@ install(
 
 install(TARGETS
   cpp_talker
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS
+  cpp_listener
   DESTINATION lib/${PROJECT_NAME}
 )
 
