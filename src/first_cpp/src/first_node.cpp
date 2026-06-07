@@ -1,6 +1,8 @@
 #include <memory>
 
-#include "rclcpp/rclcpp.hpp"
+#include "rclcpp/executors.hpp"
+#include "rclcpp/logging.hpp"
+#include "rclcpp/node.hpp"
 
 class FirstNode : public rclcpp::Node
 {
