@@ -38,6 +38,11 @@ add_executable(
   src/first_node.cpp
 )
 
+add_executable(
+  cpp_talker
+  src/talker.cpp
+)
+
 # ROS2 推荐使用 ament_target_dependencies()
 # 来声明 ROS2 Package 依赖。
 #
@@ -52,6 +57,12 @@ add_executable(
 ament_target_dependencies(
   first_node
   rclcpp
+)
+
+ament_target_dependencies(
+  cpp_talker
+  rclcpp
+  std_msgs
 )
 
 # ------------------------------------------------------------------------------
@@ -74,6 +85,11 @@ ament_target_dependencies(
 # 但 ros2 run 无法找到该节点。
 install(
   TARGETS first_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS
+  cpp_talker
   DESTINATION lib/${PROJECT_NAME}
 )
 

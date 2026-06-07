@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
           'first_node = first_py.first_node:main',
+          'py_listener = first_py.listener:main',
         ],
     },
 )
