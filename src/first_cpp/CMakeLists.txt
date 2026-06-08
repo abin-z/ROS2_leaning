@@ -50,11 +50,11 @@ add_executable(
   src/listener.cpp
 )
 
-add_executable(add_server
+add_executable(cpp_add_server
   src/add_server.cpp
 )
 
-add_executable(add_client
+add_executable(cpp_add_client
   src/add_client.cpp
 )
 
@@ -87,13 +87,13 @@ ament_target_dependencies(
 )
 
 ament_target_dependencies(
-  add_server
+  cpp_add_server
   rclcpp
   example_interfaces
 )
 
 ament_target_dependencies(
-  add_client
+  cpp_add_client
   rclcpp
   example_interfaces
 )
@@ -121,8 +121,8 @@ install(
     first_node
     cpp_talker
     cpp_listener
-    add_server
-    add_client
+    cpp_add_server
+    cpp_add_client
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -27,6 +27,8 @@ setup(
           'first_node = first_py.first_node:main',
           'py_listener = first_py.listener:main',
           'py_talker = first_py.talker:main',
+          'py_add_server = first_py.add_server:main',
+          'py_add_client = first_py.add_client:main',
         ],
     },
 )
