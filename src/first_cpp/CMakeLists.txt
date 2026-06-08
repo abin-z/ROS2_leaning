@@ -54,6 +54,10 @@ add_executable(add_server
   src/add_server.cpp
 )
 
+add_executable(add_client
+  src/add_client.cpp
+)
+
 # ROS2 推荐使用 ament_target_dependencies()
 # 来声明 ROS2 Package 依赖。
 #
@@ -88,6 +92,12 @@ ament_target_dependencies(
   example_interfaces
 )
 
+ament_target_dependencies(
+  add_client
+  rclcpp
+  example_interfaces
+)
+
 # ------------------------------------------------------------------------------
 # 安装规则
 # ------------------------------------------------------------------------------
@@ -112,6 +122,7 @@ install(
     cpp_talker
     cpp_listener
     add_server
+    add_client
   DESTINATION lib/${PROJECT_NAME}
 )
 
