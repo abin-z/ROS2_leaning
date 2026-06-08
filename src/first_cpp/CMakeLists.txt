@@ -29,6 +29,8 @@ find_package(ament_cmake REQUIRED)
 # 提供 Node、Publisher、Subscriber、Service、Action 等核心功能。
 find_package(rclcpp REQUIRED)
 
+find_package(example_interfaces REQUIRED)
+
 # ------------------------------------------------------------------------------
 # 可执行程序
 # ------------------------------------------------------------------------------
@@ -46,6 +48,10 @@ add_executable(
 add_executable(
   cpp_listener 
   src/listener.cpp
+)
+
+add_executable(add_server
+  src/add_server.cpp
 )
 
 # ROS2 推荐使用 ament_target_dependencies()
@@ -76,6 +82,12 @@ ament_target_dependencies(
   std_msgs
 )
 
+ament_target_dependencies(
+  add_server
+  rclcpp
+  example_interfaces
+)
+
 # ------------------------------------------------------------------------------
 # 安装规则
 # ------------------------------------------------------------------------------
@@ -95,17 +107,11 @@ ament_target_dependencies(
 # colcon build 可以成功，
 # 但 ros2 run 无法找到该节点。
 install(
-  TARGETS first_node
-  DESTINATION lib/${PROJECT_NAME}
-)
-
-install(TARGETS
-  cpp_talker
-  DESTINATION lib/${PROJECT_NAME}
-)
-
-install(TARGETS
-  cpp_listener
+  TARGETS
+    first_node
+    cpp_talker
+    cpp_listener
+    add_server
   DESTINATION lib/${PROJECT_NAME}
 )
 
