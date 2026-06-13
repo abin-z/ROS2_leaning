@@ -1,18 +1,61 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<!-- ROS 2 包的配置文件，定义包的元数据和依赖关系 -->
 <package format="3">
+  <!-- 包的名称 -->
   <name>robot_interfaces</name>
+  <!-- 包的版本号 -->
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <!-- 包的描述：定义机器人的自定义接口（消息、服务、动作） -->
+  <description>Robot custom interfaces</description>
+  <!-- 包的维护者信息 -->
   <maintainer email="abin.z@outlook.com">abin</maintainer>
-  <license>TODO: License declaration</license>
+  <!-- 许可证类型 -->
+  <license>MIT</license>
 
+  <!-- ======================== 构建依赖 ======================== -->
+  
+  <!-- CMake 构建工具：ROS 2 使用 ament_cmake 作为构建系统 -->
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <!-- 
+    IDL 代码生成器（Interface Definition Language）
+    用于将 .msg/.srv/.action 接口定义文件自动生成为 C++ 和 Python 代码
+    只在编译时需要，运行时不需要
+  -->
+  <build_depend>rosidl_default_generators</build_depend>
+
+  <!-- ======================== 运行时依赖 ======================== -->
+  
+  <!-- 
+    rosidl 运行时库：
+    - 提供接口数据类型的支持库
+    - 使用本包接口的其他包需要依赖这个库来正确序列化/反序列化接口数据
+    - 例如：当其他包导入 robot_interfaces 的 action 时，需要这个库
+  -->
+  <exec_depend>rosidl_default_runtime</exec_depend>
+
+  <!-- ======================== 包的角色定义 ======================== -->
+  
+  <!-- 
+    声明这是一个接口包（Interface Package）
+    接口包的特点：
+    - 只定义接口（msg/srv/action），不包含实现逻辑
+    - 其他包导入这些接口来通信
+    - 这个标记告诉 ROS 2 以特殊方式处理此包
+  -->
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <!-- ======================== 测试依赖 ======================== -->
+  
+  <!-- 自动代码检查工具（代码风格、潜在错误等） -->
   <test_depend>ament_lint_auto</test_depend>
+  <!-- 通用的 linting 检查规则 -->
   <test_depend>ament_lint_common</test_depend>
 
+  <!-- 导出配置 -->
   <export>
+    <!-- 指定使用 ament_cmake 作为构建类型 -->
     <build_type>ament_cmake</build_type>
   </export>
 </package>

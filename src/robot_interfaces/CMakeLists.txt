@@ -1,26 +1,27 @@
+# 指定CMake的最低版本要求（3.8或更高）
 cmake_minimum_required(VERSION 3.8)
+
+# 定义项目名称为 robot_interfaces
 project(robot_interfaces)
 
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
-
-# find dependencies
+# 查找并加载 ament_cmake 包（ROS 2 的构建系统核心）
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
-  set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
-  set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
-endif()
+# 查找并加载 rosidl_default_generators 包（用于生成ROS接口的代码生成器）
+find_package(rosidl_default_generators REQUIRED)
 
+# 使用 rosidl 代码生成器来自动生成接口代码
+# ${PROJECT_NAME} 表示项目名称 robot_interfaces
+# "action/TurnAngle.action" 是要生成的Action接口文件路径
+rosidl_generate_interfaces(
+  ${PROJECT_NAME}
+  "action/TurnAngle.action"
+)
+
+# 导出依赖：告诉依赖本包的其他包需要安装 rosidl_default_runtime 运行时库
+ament_export_dependencies(
+  rosidl_default_runtime
+)
+
+# 完成ROS 2包的配置，生成必要的CMake配置文件
 ament_package()
