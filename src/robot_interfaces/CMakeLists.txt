@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.8)
 
 # 定义项目名称为 robot_interfaces
 project(robot_interfaces)
+# 生成 compile_commands.json 文件，方便代码分析工具（如 clangd、clang-tidy、VSCode）使用
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # 查找并加载 ament_cmake 包（ROS 2 的构建系统核心）
 find_package(ament_cmake REQUIRED)

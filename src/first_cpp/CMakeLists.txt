@@ -31,6 +31,9 @@ find_package(rclcpp REQUIRED)
 
 find_package(example_interfaces REQUIRED)
 
+find_package(rclcpp_action REQUIRED)
+find_package(robot_interfaces REQUIRED)
+
 # ------------------------------------------------------------------------------
 # 可执行程序
 # ------------------------------------------------------------------------------
@@ -98,6 +101,28 @@ ament_target_dependencies(
   example_interfaces
 )
 
+add_executable(turn_angle_server
+  src/turn_angle_server.cpp
+)
+
+ament_target_dependencies(
+  turn_angle_server
+  rclcpp
+  rclcpp_action
+  robot_interfaces
+)
+
+add_executable(turn_angle_client
+  src/turn_angle_client.cpp
+)
+
+ament_target_dependencies(
+  turn_angle_client
+  rclcpp
+  rclcpp_action
+  robot_interfaces
+)
+
 # ------------------------------------------------------------------------------
 # 安装规则
 # ------------------------------------------------------------------------------
@@ -123,6 +148,8 @@ install(
     cpp_listener
     cpp_add_server
     cpp_add_client
+    turn_angle_server
+    turn_angle_client
   DESTINATION lib/${PROJECT_NAME}
 )
 
