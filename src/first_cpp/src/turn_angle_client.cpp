@@ -28,6 +28,7 @@ class TurnAngleClient : public rclcpp::Node
 
   void send_goal()
   {
+    RCLCPP_INFO(get_logger(), "Preparing to send goal...");
     if (goal_sent_) return;
 
     if (!client_->wait_for_action_server(std::chrono::seconds(5)))

@@ -64,7 +64,7 @@ class TurnAngleServer : public rclcpp::Node
 
     double current = 0.0;
 
-    rclcpp::Rate rate(1.0);  // 1Hz
+    rclcpp::Rate rate(5);  // 5Hz
 
     while (rclcpp::ok() && current < target)
     {
