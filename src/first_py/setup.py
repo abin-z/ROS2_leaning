@@ -16,7 +16,7 @@ setup(
     maintainer='abin',
     maintainer_email='abin.z@outlook.com',
     description='TODO: Package description',
-    license='TODO: License declaration',
+    license='MIT',
     extras_require={
         'test': [
             'pytest',
@@ -29,6 +29,8 @@ setup(
           'py_talker = first_py.talker:main',
           'py_add_server = first_py.add_server:main',
           'py_add_client = first_py.add_client:main',
+          'py_turn_angle_server = first_py.turn_angle_server:main',
+          'py_turn_angle_client = first_py.turn_angle_client:main',
         ],
     },
 )

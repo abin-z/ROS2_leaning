@@ -101,23 +101,23 @@ ament_target_dependencies(
   example_interfaces
 )
 
-add_executable(turn_angle_server
+add_executable(cpp_turn_angle_server
   src/turn_angle_server.cpp
 )
 
 ament_target_dependencies(
-  turn_angle_server
+  cpp_turn_angle_server
   rclcpp
   rclcpp_action
   robot_interfaces
 )
 
-add_executable(turn_angle_client
+add_executable(cpp_turn_angle_client
   src/turn_angle_client.cpp
 )
 
 ament_target_dependencies(
-  turn_angle_client
+  cpp_turn_angle_client
   rclcpp
   rclcpp_action
   robot_interfaces
@@ -148,8 +148,8 @@ install(
     cpp_listener
     cpp_add_server
     cpp_add_client
-    turn_angle_server
-    turn_angle_client
+    cpp_turn_angle_server
+    cpp_turn_angle_client
   DESTINATION lib/${PROJECT_NAME}
 )
 

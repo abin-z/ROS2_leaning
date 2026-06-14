@@ -5,10 +5,12 @@
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="abin.z@outlook.com">abin</maintainer>
-  <license>TODO: License declaration</license>
+  <license>MIT</license>
 
   <depend>rclpy</depend>
   <depend>example_interfaces</depend>
+  <depend>rclpy_action</depend>
+  <depend>robot_interfaces</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
